@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glue — AI Automation Assistant for Developers | Automated Bug Triage & PR Drafting</title>
+<meta name="description" content="Glue is an AI automation assistant for developers that triages Sentry alerts, pulls Slack context, updates Linear/Jira, and drafts the pull request automatically. Join the waitlist for early access.">
+<meta property="og:title" content="Glue — The AI teammate for everything outside your editor">
+<meta property="og:url" content="https://glue.vercel.app/">
+<meta property="og:description" content="Autocomplete writes your code. Glue ships it. AI automation for the 40% of your day that happens outside the editor.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://placehold.co/1200x630/0A0D13/F5A623?font=jetbrains-mono&text=Glue">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glue — The AI teammate for everything outside your editor">
+<meta name="twitter:description" content="Autocomplete writes your code. Glue ships it.">
+<meta name="twitter:image" content="https://placehold.co/1200x630/0A0D13/F5A623?font=jetbrains-mono&text=Glue">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0D13'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23F5A623'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://glue.vercel.app/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Glue",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Glue is an AI automation assistant for developers that automatically triages Sentry alerts, gathers Slack context, updates Linear or Jira tickets, and drafts pull requests — automating the manual glue work that happens outside the code editor.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/PreOrder"
+  }
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>glue</div>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#trust">Guardrails</a>
+      <a href="#pipeline">The problem</a>
+    </div>
+    <a href="#waitlist" class="nav-cta">Join waitlist</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">EARLY ACCESS — LIMITED SEATS THIS QUARTER</div>
+      <h1>Autocomplete writes<br>your code. <span class="strike">Glue</span><br><span class="accent">ships it.</span></h1>
+      <p class="hero-sub">Glue is the AI teammate for the <b>40% of your day that happens outside the editor</b> — triaging alerts, hunting context across Slack, and drafting the PR before you've finished reading the notification.</p>
+      <div class="cta-row">
+        <a href="#waitlist" class="btn-primary">Join waitlist →</a>
+        <a href="#waitlist" class="btn-secondary">Install on GitHub</a>
+      </div>
+      <div class="cta-note">No credit card. Early access rolls out on a first-come basis.</div>
+    </div>
+
+    <div class="term" id="terminal">
+      <div class="term-head">
+        <div class="term-dot" style="background:#FF5C5C"></div>
+        <div class="term-dot" style="background:#F5A623"></div>
+        <div class="term-dot" style="background:#3DDC84"></div>
+        <div class="term-title">glue — live activity</div>
+      </div>
+      <div class="term-body" id="term-body"></div>
+    </div>
+  </div>
+</header>
+
+<div class="stack-strip">
+  <div class="wrap stack-inner">
+    <span>Watches <b>Sentry</b></span>
+    <span>Reads <b>Slack</b></span>
+    <span>Updates <b>Linear / Jira</b></span>
+    <span>Searches <b>your codebase</b></span>
+    <span>Opens <b>Pull Requests</b></span>
+  </div>
+</div>
+
+<section id="pipeline">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">The problem</span>
+      <h2>Your editor was never the bottleneck.</h2>
+      <p class="section-desc">Writing the fix takes ten minutes. Finding out something broke, figuring out why, and proving it's fixed takes the rest of your afternoon. That's the gap Glue closes.</p>
+    </div>
+
+    <div class="pipeline-compare">
+      <div class="pipe-card before">
+        <div class="pipe-label">◆ Without Glue</div>
+        <div class="pipe-steps">
+          <div class="pipe-step"><span class="n">01</span> Sentry alert fires, sits in a channel</div>
+          <div class="pipe-step"><span class="n">02</span> Search Slack history for context</div>
+          <div class="pipe-step"><span class="n">03</span> Open Jira, write up a ticket</div>
+          <div class="pipe-step"><span class="n">04</span> Grep the codebase for the source</div>
+          <div class="pipe-step"><span class="n">05</span> Reproduce locally</div>
+          <div class="pipe-step"><span class="n">06</span> Draft a PR, write a test</div>
+        </div>
+        <div class="pipe-meta">Time to PR <b>~2–4 hrs</b></div>
+      </div>
+
+      <div class="pipe-card after">
+        <div class="pipe-label">◆ With Glue</div>
+        <div class="pipe-steps">
+          <div class="pipe-step">Sentry alert fires</div>
+          <div class="pipe-step">Glue identifies root cause + links the PR that caused it</div>
+          <div class="pipe-step">Glue opens the ticket, drafts the PR, writes the regression test</div>
+          <div class="pipe-step human">You review the diff</div>
+          <div class="pipe-step human">You click Approve & Deploy</div>
+        </div>
+        <div class="pipe-meta">Time to PR <b>~4 min</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-section" id="trust">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Guardrails</span>
+      <h2>It drafts. You decide.</h2>
+      <p class="section-desc">Glue never pushes to production without a human click. Here's exactly where the line sits.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon">01</div>
+        <h3>Nothing merges without approval</h3>
+        <p>Every PR Glue opens is a draft. It cannot merge, deploy, or close a ticket on its own — ever.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">02</div>
+        <h3>Scoped, revocable access</h3>
+        <p>Read access to the repos and channels you choose. Revoke it in one click, at any time, from your dashboard.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">03</div>
+        <h3>Every action is logged</h3>
+        <p>Full audit trail of what Glue read, what it changed, and why — attached to the PR itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">How it works</span>
+      <h2>Three steps. No config files.</h2>
+    </div>
+    <div class="steps-list">
+      <div class="step-row">
+        <div class="step-num">01</div>
+        <div><h3>Connect your tools <span class="step-tag">2 min</span></h3>
+        <p>Install the GitHub app and link Slack + Sentry + Linear (or Jira). Glue indexes your codebase read-only.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">02</div>
+        <div><h3>Glue watches for signal <span class="step-tag">automatic</span></h3>
+        <p>New Sentry alerts, failed CI runs, and flagged Slack threads are triaged and matched against recent commits.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">03</div>
+        <div><h3>You approve, Glue ships <span class="step-tag">one click</span></h3>
+        <p>Review the draft PR and regression test. Approve, and Glue handles the rest of the checklist.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Questions</span>
+      <h2>How this is different</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>How is this different from Copilot or Cursor?</h3>
+        <p>Copilot and Cursor help you write code faster inside the editor. Glue works before you ever open the editor — it triages the alert, finds the cause, and has a draft ready when you sit down.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How is this different from Sentry Seer or GitHub Copilot Workspace?</h3>
+        <p>Those tools work within one product's walls. Glue's job is the handoff between tools — Sentry to Slack to Linear to GitHub — so nothing gets lost in the switch between them.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can it merge or deploy code on its own?</h3>
+        <p>No. Glue opens draft pull requests only. A human always approves before anything merges or deploys — see <a href="#trust" style="color:var(--signal);border-bottom:1px solid var(--signal-dim);">Guardrails</a> above.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What will it cost?</h3>
+        <p>Pricing isn't final. Early access users get a founding-member rate that's locked in before general availability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="waitlist">
+  <div class="wrap">
+    <h2>Stop being the glue.<br>Let Glue be the glue.</h2>
+    <p>We're onboarding early access users in small batches. Join the waitlist to be first in line.</p>
+
+    <form class="waitlist-form" id="waitlistForm" novalidate>
+      <input type="email" id="emailInput" placeholder="you@company.com" autocomplete="email" required>
+      <button type="submit" id="waitlistBtn">Join waitlist →</button>
+    </form>
+    <div class="form-msg" id="formMsg"></div>
+    <div class="waitlist-success" id="waitlistSuccess">✓ <span>You're on the list — we'll email you when it's your turn.</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>glue — built for developers, not around them</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
