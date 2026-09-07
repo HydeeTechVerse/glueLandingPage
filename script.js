@@ -1,20 +1,25 @@
 const lines = [
-  {tag:'SENTRY', cls:'tag-sentry', html:'Alert: <code>TypeError</code> in <b>authMiddleware.ts</b> — 14 occurrences / 3 min'},
-  {tag:'GLUE', cls:'tag-agent', html:'Root cause found: introduced by <code>PR #342</code>, merged 2 hrs ago'},
-  {tag:'LINEAR', cls:'tag-linear', html:'Ticket created and linked: <code>ENG-892</code>'},
-  {tag:'GLUE', cls:'tag-agent', html:'Reproduced locally, regression test written'},
-  {tag:'PR', cls:'tag-pr', html:'Draft opened: <code>#345 fix(auth): null check on session token</code>'},
+  {time:'14:02:11', tag:'sentry', cls:'tag-sentry', html:'new issue, <code>TypeError: Cannot read properties of null</code> in /api/user, line 42'},
+  {time:'14:02:14', tag:'glue', cls:'tag-agent', html:'checking context: stack trace, recent changes, related commits'},
+  {time:'14:02:19', tag:'glue', cls:'tag-agent', html:'found a related change, <code>a7f3c2d</code>, user serialization was changed'},
+  {time:'14:02:20', tag:'note', cls:'tag-aside', html:'(likely cause: getUser() can return null when the user isn\u2019t found)'},
+  {time:'14:03:02', tag:'github', cls:'tag-linear', html:'draft PR opened: "fix: handle null user"'},
+  {time:'14:03:04', tag:'pr', cls:'tag-pr', html:'status: ready for review'},
 ];
 
 const body = document.getElementById('term-body');
 let delay = 200;
-const stepDelay = 850;
+const stepDelay = 780;
 
 lines.forEach((l, i) => {
   const el = document.createElement('div');
-  el.className = 'term-line';
+  el.className = 'term-line' + (l.tag === 'note' ? ' term-aside' : '');
   el.style.animationDelay = delay + 'ms';
-  el.innerHTML = `<span class="tag ${l.cls}">${l.tag}</span><span class="term-text">${l.html}</span>`;
+  if (l.tag === 'note') {
+    el.innerHTML = `<span class="term-text term-note">${l.html}</span>`;
+  } else {
+    el.innerHTML = `<span class="term-time">${l.time}</span><span class="tag ${l.cls}">${l.tag}</span><span class="term-text">${l.html}</span>`;
+  }
   body.appendChild(el);
   delay += stepDelay;
 });
@@ -22,24 +27,16 @@ lines.forEach((l, i) => {
 const btn = document.createElement('div');
 btn.className = 'term-btn';
 btn.style.animationDelay = delay + 'ms';
-btn.textContent = '✓ Approve & Deploy';
+btn.textContent = '✓ Review and approve';
 body.appendChild(btn);
 
 const cursor = document.createElement('span');
 cursor.className = 'term-cursor';
 setTimeout(() => body.appendChild(cursor), delay + 300);
 
-// Waitlist form — backed by Supabase
-// 1. Create a free project at supabase.com
-// 2. Run supabase-setup.sql in the SQL Editor to create the `waitlist` table
-// 3. Paste your Project URL + anon/publishable key below (Settings → API)
-const SUPABASE_URL = 'https://upbuidzwlsydbppplahb.supabase.co';   // e.g. https://abcdefgh.supabase.co
-const SUPABASE_ANON_KEY = 'sb_publishable_f9tpYz6tgkGnkGte178eWw_d64ooS0X';
+// Waitlist form, backed by Formspree
 
-let supabaseClient = null;
-if (SUPABASE_URL !== 'YOUR_SUPABASE_PROJECT_URL') {
-  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-}
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xnpqzerp';
 
 const form = document.getElementById('waitlistForm');
 const emailInput = document.getElementById('emailInput');
@@ -69,29 +66,30 @@ form.addEventListener('submit', async (e) => {
   waitlistBtn.textContent = 'Joining…';
 
   try {
-    if (!supabaseClient) {
-      // Falls back to a simulated request if credentials haven't been added yet,
-      // so the form still demos correctly out of the box.
-      await new Promise(r => setTimeout(r, 700));
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    });
+
+    if (response.ok) {
+      form.style.display = 'none';
+      formMsg.textContent = '';
+      waitlistSuccess.style.display = 'inline-flex';
     } else {
-      const { error } = await supabaseClient.from('waitlist').insert({ email });
-      if (error) {
-        if (error.code === '23505') { // unique_violation — email already on the list
-          form.style.display = 'none';
-          waitlistSuccess.querySelector('span').textContent = "You're already on the list — we'll be in touch.";
-          waitlistSuccess.style.display = 'inline-flex';
-          return;
-        }
-        throw error;
+      const data = await response.json().catch(() => null);
+      if (data && data.errors && data.errors.some(err => err.field === 'email' && err.code === 'DUPLICATE')) {
+        form.style.display = 'none';
+        waitlistSuccess.querySelector('span').textContent = "You're already on the list, we'll be in touch.";
+        waitlistSuccess.style.display = 'inline-flex';
+      } else {
+        throw new Error('Formspree submission failed');
       }
     }
-    form.style.display = 'none';
-    formMsg.textContent = '';
-    waitlistSuccess.style.display = 'inline-flex';
   } catch (err) {
-    formMsg.textContent = 'Something went wrong — try again in a moment.';
+    formMsg.textContent = 'Something went wrong, try again in a moment.';
     formMsg.className = 'form-msg error';
     waitlistBtn.disabled = false;
-    waitlistBtn.textContent = 'Join waitlist →';
+    waitlistBtn.textContent = 'Join the waitlist';
   }
 });

@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glue — AI Automation Assistant for Developers | Automated Bug Triage & PR Drafting</title>
+<title>Glue: AI Automation Assistant for Developers | Automated Bug Triage & PR Drafting</title>
 <meta name="description" content="Glue is an AI automation assistant for developers that triages Sentry alerts, pulls Slack context, updates Linear/Jira, and drafts the pull request automatically. Join the waitlist for early access.">
-<meta property="og:title" content="Glue — The AI teammate for everything outside your editor">
+<meta property="og:title" content="Glue: an AI teammate for everything outside your editor">
 <meta property="og:url" content="https://useglue.vercel.app/">
-<meta property="og:description" content="Autocomplete writes your code. Glue ships it. AI automation for the 40% of your day that happens outside the editor.">
+<meta property="og:description" content="I got tired of losing afternoons to alert-triage busywork, so I'm building an AI assistant that does it for me. Following along as I build it in public.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://placehold.co/1200x630/0A0D13/F5A623?font=jetbrains-mono&text=Glue">
+<meta property="og:image" content="https://placehold.co/1200x630/17130E/E8A33D?font=jetbrains-mono&text=Glue">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Glue — The AI teammate for everything outside your editor">
-<meta name="twitter:description" content="Autocomplete writes your code. Glue ships it.">
-<meta name="twitter:image" content="https://placehold.co/1200x630/0A0D13/F5A623?font=jetbrains-mono&text=Glue">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0D13'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23F5A623'/%3E%3C/svg%3E">
+<meta name="twitter:title" content="Glue: an AI teammate for everything outside your editor">
+<meta name="twitter:description" content="Building an AI assistant that triages alerts and drafts the fix before I've finished my coffee. Building in public.">
+<meta name="twitter:image" content="https://placehold.co/1200x630/17130E/E8A33D?font=jetbrains-mono&text=Glue">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317130E'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23E8A33D'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://useglue.vercel.app/">
 <meta name="google-site-verification" content="5XY1vjmpEQsODbqKXmQZQkEJDtZXpt-eHJWjyQUdiN0" />
 <script type="application/ld+json">
@@ -26,7 +26,7 @@
   "name": "Glue",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Web",
-  "description": "Glue is an AI automation assistant for developers that automatically triages Sentry alerts, gathers Slack context, updates Linear or Jira tickets, and drafts pull requests — automating the manual glue work that happens outside the code editor.",
+  "description": "Glue is an AI automation assistant for developers that automatically triages Sentry alerts, gathers Slack context, updates Linear or Jira tickets, and drafts pull requests. It automates the manual glue work that happens outside the code editor.",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -35,42 +35,42 @@
   }
 }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-    <div class="logo"><span class="dot"></span>glue</div>
+    <div class="logo"><span class="drip"></span>glue</div>
     <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#trust">Guardrails</a>
       <a href="#pipeline">The problem</a>
+      <a href="#how">How it works</a>
+      <a href="#trust">Your control</a>
     </div>
-    <a href="#waitlist" class="nav-cta">Join waitlist</a>
+    <a href="#waitlist" class="nav-cta">Join the waitlist</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">EARLY ACCESS — LIMITED SEATS THIS QUARTER</div>
-      <h1>Autocomplete writes<br>your code. <span class="strike">Glue</span><br><span class="accent">ships it.</span></h1>
-      <p class="hero-sub">Glue is the AI teammate for the <b>40% of your day that happens outside the editor</b> — triaging alerts, hunting context across Slack, and drafting the PR before you've finished reading the notification.</p>
+      <p class="kicker">Building this in the open, early access open.</p>
+      <h1>I got paged at 2am for the third time this month.<span class="drip-mark" aria-hidden="true"></span></h1>
+      <p class="hero-sub">So I'm building Glue. It watches your production errors, gathers the context around them, traces what likely caused the problem, and prepares a fix for you to review.</p>
+      <p class="hero-sub" style="margin-top:-18px;">Less time jumping between Sentry, GitHub, Slack, and Linear. More time actually shipping.</p>
       <div class="cta-row">
-        <a href="#waitlist" class="btn-primary">Join waitlist →</a>
-        <a href="#waitlist" class="btn-secondary">Install on GitHub</a>
+        <a href="#waitlist" class="btn-primary">Join the waitlist</a>
+        <a href="#how" class="btn-secondary">See how it works</a>
       </div>
-      <div class="cta-note">No credit card. Early access rolls out on a first-come basis.</div>
+      <p class="cta-note">No credit card. No sales calls. Just an email, and I'll reach out when it's ready.</p>
     </div>
 
     <div class="term" id="terminal">
       <div class="term-head">
-        <div class="term-dot" style="background:#FF5C5C"></div>
-        <div class="term-dot" style="background:#F5A623"></div>
-        <div class="term-dot" style="background:#3DDC84"></div>
-        <div class="term-title">glue — live activity</div>
+        <div class="term-dot" style="background:#5A4A38"></div>
+        <div class="term-dot" style="background:#5A4A38"></div>
+        <div class="term-dot" style="background:#5A4A38"></div>
+        <div class="term-title">glue investigates, /api/user issue</div>
       </div>
       <div class="term-body" id="term-body"></div>
     </div>
@@ -79,47 +79,143 @@
 
 <div class="stack-strip">
   <div class="wrap stack-inner">
-    <span>Watches <b>Sentry</b></span>
-    <span>Reads <b>Slack</b></span>
-    <span>Updates <b>Linear / Jira</b></span>
-    <span>Searches <b>your codebase</b></span>
-    <span>Opens <b>Pull Requests</b></span>
+    <span>Watches <b>your errors</b></span>
+    <span>Reads <b>the context</b></span>
+    <span>Checks <b>recent changes</b></span>
+    <span>Connects <b>the dots</b></span>
+    <span>Opens <b>a draft PR</b></span>
   </div>
 </div>
 
 <section id="pipeline">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-eyebrow">The problem</span>
-      <h2>Your editor was never the bottleneck.</h2>
-      <p class="section-desc">Writing the fix takes ten minutes. Finding out something broke, figuring out why, and proving it's fixed takes the rest of your afternoon. That's the gap Glue closes.</p>
+      <h2>The fix took ten minutes. Finding it took three hours.</h2>
+      <p class="section-desc">That's usually the problem. The fix isn't always difficult, finding the reason something broke is. You check the error. Then the logs. Then Slack. Then recent commits. Then pull requests. Somewhere between all those tools is the context you actually need. Glue handles the detective work so you can focus on fixing and shipping.</p>
     </div>
 
     <div class="pipeline-compare">
       <div class="pipe-card before">
-        <div class="pipe-label">◆ Without Glue</div>
-        <div class="pipe-steps">
-          <div class="pipe-step"><span class="n">01</span> Sentry alert fires, sits in a channel</div>
-          <div class="pipe-step"><span class="n">02</span> Search Slack history for context</div>
-          <div class="pipe-step"><span class="n">03</span> Open Jira, write up a ticket</div>
-          <div class="pipe-step"><span class="n">04</span> Grep the codebase for the source</div>
-          <div class="pipe-step"><span class="n">05</span> Reproduce locally</div>
-          <div class="pipe-step"><span class="n">06</span> Draft a PR, write a test</div>
-        </div>
-        <div class="pipe-meta">Time to PR <b>~2–4 hrs</b></div>
+        <p class="pipe-label">Without Glue</p>
+        <ul class="pipe-steps">
+          <li>A production alert fires</li>
+          <li>You open the stack trace</li>
+          <li>You search through logs</li>
+          <li>You check Slack for context</li>
+          <li>You look through recent commits</li>
+          <li>You find the related pull request</li>
+          <li>You trace what changed</li>
+          <li>You finally find the problem</li>
+        </ul>
+        <p class="pipe-meta">Time spent investigating: <b>hours</b></p>
       </div>
 
+      <div class="seam" aria-hidden="true"><span class="seam-drip"></span></div>
+
       <div class="pipe-card after">
-        <div class="pipe-label">◆ With Glue</div>
-        <div class="pipe-steps">
-          <div class="pipe-step">Sentry alert fires</div>
-          <div class="pipe-step">Glue identifies root cause + links the PR that caused it</div>
-          <div class="pipe-step">Glue opens the ticket, drafts the PR, writes the regression test</div>
-          <div class="pipe-step human">You review the diff</div>
-          <div class="pipe-step human">You click Approve & Deploy</div>
-        </div>
-        <div class="pipe-meta">Time to PR <b>~4 min</b></div>
+        <p class="pipe-label">With Glue</p>
+        <ul class="pipe-steps">
+          <li>A production alert fires</li>
+          <li>Glue gathers the context</li>
+          <li>Glue checks recent changes</li>
+          <li>Glue connects the related information</li>
+          <li>Glue identifies the likely cause</li>
+          <li>A draft fix is prepared</li>
+          <li class="human">You review the changes</li>
+          <li class="human">You approve and ship</li>
+        </ul>
+        <p class="pipe-meta">Investigation time: <b>minutes</b></p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="note-section">
+  <div class="wrap">
+    <blockquote class="note">
+      <p>I'm a backend developer, not a marketer, so this page will probably change a lot. I started building Glue because I got tired of spending more time investigating incidents than fixing them. The workflow always felt unnecessarily fragmented, an error happens, and suddenly you're jumping between monitoring tools, Slack messages, GitHub commits, pull requests, and issue trackers. I wanted something that could connect the dots before I even opened half those tabs. So I'm building Glue.</p>
+      <cite>Building this in public, one incident at a time.</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section class="how-section" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">How it works</p>
+      <h2>From production error to shipped fix.</h2>
+      <p class="section-desc">Glue follows the investigation from the moment something breaks to the moment you're ready to ship the fix. It gathers the context, traces the likely cause, and prepares the work for you. You stay in control the entire time.</p>
+    </div>
+    <div class="workflow" role="list">
+      <div class="wf-step" role="listitem">
+        <span class="wf-icon wf-icon-err">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 4L2 20h20L12 4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+        </span>
+        <div>
+          <p class="wf-num">Step 1</p>
+          <h3>Production error</h3>
+          <p>Something breaks. Glue receives the signal.</p>
+        </div>
+      </div>
+
+      <div class="wf-step" role="listitem">
+        <span class="wf-icon wf-icon-amber">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <p class="wf-num">Step 2</p>
+          <h3>Glue gathers context</h3>
+          <p>Errors, logs, recent changes, commits, and related activity.</p>
+        </div>
+      </div>
+
+      <div class="wf-step" role="listitem">
+        <span class="wf-icon wf-icon-amber">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+        </span>
+        <div>
+          <p class="wf-num">Step 3</p>
+          <h3>Glue finds the likely cause</h3>
+          <p>Glue connects the information and traces what most likely introduced the issue.</p>
+        </div>
+      </div>
+
+      <div class="wf-step" role="listitem">
+        <span class="wf-icon wf-icon-blue">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 3v18M6 3a3 3 0 100 0zM18 15a3 3 0 100 6 3 3 0 000-6zM18 15V7a4 4 0 00-4-4H9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="20" r="2.2" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="4" r="2.2" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <div>
+          <p class="wf-num">Step 4</p>
+          <h3>A draft PR is created</h3>
+          <p>Glue prepares a proposed fix and adds the relevant context.</p>
+        </div>
+      </div>
+
+      <div class="wf-step" role="listitem">
+        <span class="wf-icon wf-icon-purple">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <div>
+          <p class="wf-num">Step 5</p>
+          <h3>You review</h3>
+          <p>Check the changes, run the tests, and decide what happens next.</p>
+        </div>
+      </div>
+
+      <div class="wf-step" role="listitem">
+        <span class="wf-icon wf-icon-ok">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4.5 16.5c-1.5 1.5-2 5-2 5s3.5-.5 5-2c.8-.8 1-2.2.2-3-.8-.8-2.2-.7-3.2.2v-.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 15l6-6M9.5 5.5C13 2 18 2 21 5c0 3-2 8-5.5 9.5L9.5 8.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <p class="wf-num">Step 6</p>
+          <h3>Merge and ship</h3>
+          <p>Approve the fix when you're ready.</p>
+        </div>
+      </div>
+    </div>
+    <div class="how-reassurance-box">
+      <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <p><b>You're always in control.</b> Glue never merges without your approval.</p>
     </div>
   </div>
 </section>
@@ -127,51 +223,27 @@
 <section class="trust-section" id="trust">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-eyebrow">Guardrails</span>
-      <h2>It drafts. You decide.</h2>
-      <p class="section-desc">Glue never pushes to production without a human click. Here's exactly where the line sits.</p>
+      <h2>I don't trust AI to touch prod either</h2>
+      <p class="section-desc">So Glue doesn't. Glue can investigate an incident, gather the relevant context, and prepare a proposed fix. But it doesn't silently push code to production. You see what it found. You see what changed. You decide what happens next.</p>
     </div>
-    <div class="trust-grid">
+    <div class="trust-list">
       <div class="trust-item">
-        <div class="trust-icon">01</div>
-        <h3>Nothing merges without approval</h3>
-        <p>Every PR Glue opens is a draft. It cannot merge, deploy, or close a ticket on its own — ever.</p>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon">02</div>
-        <h3>Scoped, revocable access</h3>
-        <p>Read access to the repos and channels you choose. Revoke it in one click, at any time, from your dashboard.</p>
+        <span class="trust-mark"></span>
+        <p class="trust-num">01</p>
+        <h3>Nothing merges without you</h3>
+        <p>Every fix starts as a draft. Glue can investigate and suggest changes, but it never merges code without your approval.</p>
       </div>
       <div class="trust-item">
-        <div class="trust-icon">03</div>
-        <h3>Every action is logged</h3>
-        <p>Full audit trail of what Glue read, what it changed, and why — attached to the PR itself.</p>
+        <span class="trust-mark"></span>
+        <p class="trust-num">02</p>
+        <h3>Access stays controlled</h3>
+        <p>Glue only works with the tools and repositories you explicitly connect. You control what it can see and where it can operate.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-eyebrow">How it works</span>
-      <h2>Three steps. No config files.</h2>
-    </div>
-    <div class="steps-list">
-      <div class="step-row">
-        <div class="step-num">01</div>
-        <div><h3>Connect your tools <span class="step-tag">2 min</span></h3>
-        <p>Install the GitHub app and link Slack + Sentry + Linear (or Jira). Glue indexes your codebase read-only.</p></div>
-      </div>
-      <div class="step-row">
-        <div class="step-num">02</div>
-        <div><h3>Glue watches for signal <span class="step-tag">automatic</span></h3>
-        <p>New Sentry alerts, failed CI runs, and flagged Slack threads are triaged and matched against recent commits.</p></div>
-      </div>
-      <div class="step-row">
-        <div class="step-num">03</div>
-        <div><h3>You approve, Glue ships <span class="step-tag">one click</span></h3>
-        <p>Review the draft PR and regression test. Approve, and Glue handles the rest of the checklist.</p></div>
+      <div class="trust-item">
+        <span class="trust-mark"></span>
+        <p class="trust-num">03</p>
+        <h3>Every action is visible</h3>
+        <p>See what Glue investigated, what it found, and why it suggested a particular fix. No mysterious automation running in the background.</p>
       </div>
     </div>
   </div>
@@ -180,48 +252,79 @@
 <section id="faq">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-eyebrow">Questions</span>
-      <h2>How this is different</h2>
+      <h2>Questions you might have</h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item">
-        <h3>How is this different from Copilot or Cursor?</h3>
-        <p>Copilot and Cursor help you write code faster inside the editor. Glue works before you ever open the editor — it triages the alert, finds the cause, and has a draft ready when you sit down.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How is this different from Sentry Seer or GitHub Copilot Workspace?</h3>
-        <p>Those tools work within one product's walls. Glue's job is the handoff between tools — Sentry to Slack to Linear to GitHub — so nothing gets lost in the switch between them.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can it merge or deploy code on its own?</h3>
-        <p>No. Glue opens draft pull requests only. A human always approves before anything merges or deploys — see <a href="#trust" style="color:var(--signal);border-bottom:1px solid var(--signal-dim);">Guardrails</a> above.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What will it cost?</h3>
-        <p>Pricing isn't final. Early access users get a founding-member rate that's locked in before general availability.</p>
-      </div>
+      <details class="faq-item" name="faq">
+        <summary>
+          <span>Is this just another AI coding assistant?</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <p>No. AI coding assistants help you write code. Glue starts with the production incident. It gathers the context around what broke, checks recent changes, traces the likely cause, and prepares a fix for you to review.</p>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary>
+          <span>What about tools like Sentry Seer or Copilot Workspace?</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <p>Those are useful tools. Glue is focused on connecting the investigation across your existing workflow, from the production error to the related code and changes. The goal isn't to replace every tool you use, it's to reduce the time spent jumping between them.</p>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary>
+          <span>Can Glue push directly to production?</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <p>No. Glue prepares a draft pull request. You review the changes and decide when or whether to merge.</p>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary>
+          <span>Does Glue replace developers?</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <p>Definitely not. Glue handles repetitive investigation work. You still understand the problem, review the solution, and make the final decision.</p>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary>
+          <span>How much will it cost?</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <p>I'm still figuring that out. People who join early will get the best pricing when Glue launches.</p>
+      </details>
     </div>
   </div>
 </section>
 
 <section class="final-cta" id="waitlist">
   <div class="wrap">
-    <h2>Stop being the glue.<br>Let Glue be the glue.</h2>
-    <p>We're onboarding early access users in small batches. Join the waitlist to be first in line.</p>
+    <h2>Spend less time investigating. More time shipping.</h2>
+    <p>I'm building Glue for developers who are tired of jumping between tools just to understand why something broke. Join the waitlist and I'll let you know when early access opens.</p>
 
     <form class="waitlist-form" id="waitlistForm" novalidate>
-      <input type="email" id="emailInput" placeholder="you@company.com" autocomplete="email" required>
-      <button type="submit" id="waitlistBtn">Join waitlist →</button>
+      <input type="email" id="emailInput" name="email" placeholder="you@company.com" autocomplete="email" required>
+      <button type="submit" id="waitlistBtn">Join the waitlist</button>
     </form>
     <div class="form-msg" id="formMsg"></div>
-    <div class="waitlist-success" id="waitlistSuccess">✓ <span>You're on the list — we'll email you when it's your turn.</span></div>
+    <div class="waitlist-success" id="waitlistSuccess">✓ <span>You're on the list. I'll email you when it's your turn.</span></div>
+    <p class="cta-note" style="margin-top:14px;">No spam. No sales calls. Just occasional updates while I build.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap footer-inner">
-    <span>glue — built for developers, not around them</span>
-    <span>© 2026</span>
+    <span>Glue, built for developers, not around them.</span>
+    <div class="footer-socials">
+      <!-- TODO: swap placeholder LinkedIn URL -->
+      <a href="https://linkedin.com/company/your-glue-page" target="_blank" rel="noopener noreferrer" aria-label="Glue on LinkedIn" class="social-link">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <!-- TODO: swap placeholder contact email -->
+      <a href="mailto:hello@useglue.com" class="social-link">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Contact</span>
+      </a>
+    </div>
+    <span>© 2026 Glue. Building in public.</span>
   </div>
 </footer>
 
